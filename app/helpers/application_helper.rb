@@ -1,5 +1,5 @@
 module ApplicationHelper
-  TITLE = "Base Title";
+  TITLE = "Bernardo Rufino";
 
   def title(title=nil, &block)
     if title
