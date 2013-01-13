@@ -24,8 +24,8 @@ h1 {
   @include low-relief(0.1, 0.95);
 }
 #content {
+  margin: 20px auto 0;
   width: 300px;
-  margin: 10px auto;
   background: #202020;
   padding: 10px;
   @include shadow(inset);
