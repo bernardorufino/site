@@ -617,6 +617,7 @@ function mousemove(e){
 
 function mouseup(e){
 	if($draw){finishDrawing();}
+	// e.which = 1 for left and 3 for right
 	else{updateM($M + (e.which - 2));}
 }
 
@@ -624,6 +625,10 @@ function watcher(){
 	[moveCar, function(step){
 		turnWheel(step * 0.25)
 	}][$controlMode]($M);
+	if ($KeysPressed.hasOwnProperty('A')) turnWheel(+0.2);
+	if ($KeysPressed.hasOwnProperty('D')) turnWheel(-0.2);
+	if ($KeysPressed.hasOwnProperty('W')) moveCar(+1);
+	if ($KeysPressed.hasOwnProperty('S')) moveCar(-1);
 }
 
 function finishDrawing(){
@@ -664,3 +669,13 @@ $(document).ready(function(){
 	$M = 0;
 	$I = setInterval(watcher, 10);
 });
+
+$KeysPressed = {}
+
+$(document).keydown(function(e) {
+	$KeysPressed[String.fromCharCode(e.which)] = true;
+})
+
+$(document).keyup(function(e) {
+	delete $KeysPressed[String.fromCharCode(e.which)];
+})
